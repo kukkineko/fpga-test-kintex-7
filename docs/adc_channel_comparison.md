@@ -64,3 +64,17 @@ Live LCSC ladders on 2026-11-18. Build: HMCAD1511 + ADF4351/100 MHz XO + XC7K160
 **Estimate: 6-layer ~100x80 mm, ENIG, impedance controlled. JLCPCB prices could not be fetched. Qty 1 means one 5-pc minimum order. Assembly (BGA reflow) is not included.
 
 Stock limits: XC7K160T-2FFG676I has 69 pcs, HMCAD1511 102, ADF4351 142, so 100 boards is not fully covered today. The FPGA price is far below authorized-distributor pricing, so treat it as remark/counterfeit risk and test or source from AMD distributors for production.
+
+## 4-channel board estimate (4x HMCAD1511 at 1 GSPS, one XC7K160T)
+
+Each channel needs its own HMCAD1511 (1 GSPS only in single-channel mode). One ADF4351 feeds an ADCLK846 6-way fanout. 4x DDR3 (64-bit) for about 4 GB/s capture. Live LCSC ladders, 2026-11-18.
+
+| Qty | 4x ADC chain | FPGA | DDR3 + flash + power | Misc* | PCB** | **Per board** | **Per channel** |
+|---|---|---|---|---|---|---|---|
+| 1 | 171 | 87.0 | 73.7 | 28 | 110 | **~$470** | ~$117 |
+| 10 | 164 | 87.0 | 69.3 | 24 | 17 | **~$360** | ~$90 |
+| 50 | 143 | 82.9 | 62.8 | 20 | 11 | **~$318** | ~$80 |
+| 100 | 138 | 82.9 | 57.1 | 18 | 8.5 | **~$303** | ~$76 |
+
+*Estimate: passives, 5x SMA, JTAG, USB-C/UART. **Estimate: 8-layer ~120x100 mm, ENIG, impedance controlled; not fetched from JLCPCB. Assembly not included.
+Stock: 100 boards needs 400 HMCAD1511 (102 in stock) and 100 FPGAs (69 in stock). Not coverable today.
