@@ -48,3 +48,19 @@ Passives, connectors and PCB are **not** costed (estimate +$1.5 to $3 per channe
 - Kintex-7 LVDS inputs run to about 1.25 Gbps per pair on HR banks, so a 1 GSPS 8-bit LVDS ADC needs DDR deserialization (HMCAD1511 outputs 8 bits as 1-bit lanes at up to 1 Gbps DDR). Check the bank speed grade.
 - ADF4351 phase noise limits SNR above about 200 MHz input. Fine for 8 bit. For 12 bit use an LMK04828 ($22.04, C478068) instead.
 - Part availability is a snapshot. Re-run `live.sh` before ordering.
+
+## Full single-channel board estimate (Option A + Kintex-7), USD per board
+
+Live LCSC ladders on 2026-11-18. Build: HMCAD1511 + ADF4351/100 MHz XO + XC7K160T-2FFG676I + DDR3 capture buffer + W25Q128 flash + 2x TPS65261 + LDOs.
+
+| Qty | ADC chain | FPGA | DDR3 + flash + power | Misc* | PCB** | **Total / board** |
+|---|---|---|---|---|---|---|
+| 1 | 56.2 | 87.0 | 23.6 | 14 | 55 | **~$236** |
+| 10 | 53.0 | 87.0 | 22.2 | 12 | 8.5 | **~$183** |
+| 50 | 47.7 | 82.9 | 19.0 | 10 | 5.5 | **~$165** |
+| 100 | 46.0 | 82.9 | 17.4 | 9 | 4.2 | **~$158** |
+
+*Estimate: passives, 2x SMA, JTAG, USB-C/UART, LEDs. Not looked up.
+**Estimate: 6-layer ~100x80 mm, ENIG, impedance controlled. JLCPCB prices could not be fetched. Qty 1 means one 5-pc minimum order. Assembly (BGA reflow) is not included.
+
+Stock limits: XC7K160T-2FFG676I has 69 pcs, HMCAD1511 102, ADF4351 142, so 100 boards is not fully covered today. The FPGA price is far below authorized-distributor pricing, so treat it as remark/counterfeit risk and test or source from AMD distributors for production.
